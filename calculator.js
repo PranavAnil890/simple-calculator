@@ -1,47 +1,75 @@
+const display = document.getElementById("display");
 
- const display = document.getElementById("display");
-
-
+// Display numbers and operators
 function SHOW(value) {
-    display.value += value;
+  display.value += value;
 }
 
-// Calculate the result safely
+// Calculate result
 function calculate() {
-    const expression = display.value;
+  let expression = display.value.trim();
 
-    // Allow only numbers, operators, decimal point, parentheses, spaces, and %
-    const valid = /^[0-9+\-*/().% ]+$/;
+  // Allow only numbers, operators, decimal point, spaces and %
+  const valid = /^[0-9+\-*/.% ]+$/;
 
-    if (!valid.test(expression)) {
+  if (!valid.test(expression)) {
+    display.value = "Error";
+    return;
+  }
+
+  // Convert percentage to /100
+  expression = expression.replaceAll("%", "/100");
+
+  try {
+    let result;
+
+    if (expression.includes("+")) {
+      const [a, b] = expression.split("+").map(Number);
+      result = a + b;
+
+    } else if (expression.includes("-")) {
+      const [a, b] = expression.split("-").map(Number);
+      result = a - b;
+
+    } else if (expression.includes("*")) {
+      const [a, b] = expression.split("*").map(Number);
+      result = a * b;
+
+    } else if (expression.includes("/")) {
+      const [a, b] = expression.split("/").map(Number);
+
+      if (b === 0) {
         display.value = "Error";
         return;
+      }
+
+      result = a / b;
+
+    } else {
+      result = Number(expression);
     }
 
-    try {
-        const result = Function(
-            `"use strict"; return (${expression.replace(/%/g, "/100")})`
-        )();
+    display.value = result;
 
-        display.value = result;
-    } catch (error) {
-        display.value = "Error";
-    }
+  } catch (error) {
+    console.error(error);
+    display.value = "Error";
+  }
 }
 
-// Clear the display
+// Clear display
 function cleardisplay() {
-    display.value = "";
+  display.value = "";
 }
 
-// Delete the last character
+// Delete last character
 function deletelast() {
-    display.value = display.value.slice(0, -1);
+  display.value = display.value.slice(0, -1);
 }
 
-// Percentage function
+// Convert current value to percentage
 function percntage() {
-    if (display.value !== "") {
-        display.value = parseFloat(display.value) / 100;
-    }
+  if (display.value !== "") {
+    display.value = Number.parseFloat(display.value) / 100;
+  }
 }
