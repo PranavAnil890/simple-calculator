@@ -7,40 +7,47 @@
   <link rel="stylesheet" href="calculator.css" />
 </head>
 <body>
+
   <div class="calcu">
-    <label for="display" style="display:none;">Calculator Display</label>
+
+    <!-- Accessibility label -->
+    <label for="display" style="display: none;">Calculator Display</label>
+
     <input class="type" type="text" id="display" readonly />
 
     <div>
+
       <button class="button" onclick="percntage()">%</button>
       <button class="button" onclick="cleardisplay()">CE</button>
       <button class="button" onclick="cleardisplay()">C</button>
       <button class="button" onclick="deletelast()">Delete</button>
-      <br />
+      <br>
 
       <button class="button" onclick="SHOW('1')">1</button>
       <button class="button" onclick="SHOW('2')">2</button>
       <button class="button" onclick="SHOW('3')">3</button>
       <button class="button" onclick="SHOW('+')">+</button>
-      <br />
+      <br>
 
       <button class="button" onclick="SHOW('4')">4</button>
       <button class="button" onclick="SHOW('5')">5</button>
       <button class="button" onclick="SHOW('6')">6</button>
       <button class="button" onclick="SHOW('-')">-</button>
-      <br />
+      <br>
 
       <button class="button" onclick="SHOW('7')">7</button>
       <button class="button" onclick="SHOW('8')">8</button>
       <button class="button" onclick="SHOW('9')">9</button>
       <button class="button" onclick="SHOW('*')">*</button>
-      <br />
+      <br>
 
       <button class="button" onclick="calculate()">=</button>
       <button class="button" onclick="SHOW('0')">0</button>
       <button class="button" onclick="SHOW('.')">.</button>
       <button class="button" onclick="SHOW('/')">/</button>
+
     </div>
+
   </div>
 
   <script src="calculator.js"></script>
