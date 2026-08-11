@@ -1,29 +1,7 @@
-// let display=document.getElementById("display");
-
-// function SHOW(value)
-//     {
-//         display.value +=value;
-
-//     }
-
-//     function calculate()
-//     {
-//         display.value = eval(display.value)
-//     }
-
-//     function cleardisplay()
-//     {
-//         display.value = "";
-//     }
-
-//     function deletelast()  
-//     {
-//         display.value = display.value.slice(0,-1);
-//     }
 
  const display = document.getElementById("display");
 
-// Show numbers and operators on the display
+
 function SHOW(value) {
     display.value += value;
 }
